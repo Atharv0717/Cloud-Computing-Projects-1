@@ -1,6 +1,7 @@
-runtime: python27
-threadsafe: true
+runtime: python311  # or python310, python39, etc.
+
+entrypoint: gunicorn -b :$PORT main:app  # assumes you have a Flask app in main.py
 
 handlers:
-- url: /
-  script: main.app
+- url: /.*
+  script: auto
